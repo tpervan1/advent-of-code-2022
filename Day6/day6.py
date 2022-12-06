@@ -1,15 +1,12 @@
-f=open('input.txt', 'r')
-for line in f:
-    for i in range(0, len(line)-3):
-        if len(set(line[i:i+4]))==4:
+def start_of_marker(input, number_of_characters):
+    for i in range(0, len(input)-number_of_characters+1):
+        if len(set(input[i:i+number_of_characters]))==number_of_characters:
             break
-#Solution for the first star
-print(i+4)
+    return i+number_of_characters
 
-f.seek(0)
-for line in f:
-    for i in range(0, len(line)-13):
-        if len(set(line[i:i+14]))==14:
-            break
-#Solution for the second star
-print(i+14)
+f=open('input.txt', 'r')
+line=f.readline()
+#solution for the first star
+print(start_of_marker(line,4))
+#solution for the second star
+print(start_of_marker(line,14))
